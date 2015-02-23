@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="edu.unsch.si2.persistencia.PersonMapper">	
+	<insert id="insertPerson" parameterType="person" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO Person (name) 
+    	VALUES (  #{name} )
+	</insert>
+        <select id="findAll" resultType="Person">
+            SELECT
+            id,
+            name
+            FROM person 
+        </select>
+        <delete id='deletePerson' parameterType='int'>
+            DELETE FROM person WHERE id = #{id}
+        </delete>
+	
+</mapper>

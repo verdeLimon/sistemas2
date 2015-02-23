@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="edu.unsch.si2.persistencia.AlbumMapper">	
+	<insert id="insertAlbum" parameterType="Album" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO album 
+            (artist,title,classical,composer) 
+    	VALUES 
+            ( #{artist},#{title},#{classical},#{composer} )
+	</insert>
+        <select id="findAll" resultType="Album">
+            SELECT
+            *
+            FROM album 
+            LIMIT 1000
+        </select>
+        <update id="updateAlbum" parameterType="Album">
+        UPDATE album SET
+            artist = #{artist},
+            title = #{title},
+            classical = #{classical},
+            composer = #{composer}
+        WHERE id = #{id}   
+        </update>
+        <delete id='deleteAlbum' parameterType='int'>
+            DELETE FROM album WHERE id = #{id}
+        </delete>
+	
+</mapper>
